@@ -4,24 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NISHIMWE Irankunda Divine — Développeuse web</title>
-<meta name="description" content="Portfolio de développeuse web — projets, compétences et contact.">
+<meta name="description" content="Portfolio de NISHIMWE Irankunda Divine, développeuse web — projets, compétences et contact.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #0b0e14;
-    --bg-elev: #10141c;
-    --panel: #131826;
-    --border: #232a3a;
-    --border-strong: #323b52;
-    --text: #e7e9ee;
-    --text-muted: #8b93a7;
-    --text-faint: #5a6178;
-    --mint: #7fe0b8;
-    --mint-dim: #4fae8c;
-    --amber: #e8b339;
-    --coral: #e8785a;
+    --bg: #ffffff;
+    --bg-elev: #f2f6fc;
+    --panel: #f8fafc;
+    --border: #e2e8f0;
+    --border-strong: #c7d2e3;
+    --text: #16202c;
+    --text-muted: #57647a;
+    --text-faint: #93a1b8;
+    --mint: #16a34a;
+    --mint-dim: #0f7a37;
+    --amber: #d99a00;
+    --coral: #2563eb;
     --mono: 'JetBrains Mono', ui-monospace, monospace;
     --sans: 'Inter', system-ui, sans-serif;
   }
@@ -53,7 +53,7 @@
   /* NAV */
   header{
     position: sticky; top:0; z-index: 10;
-    background: rgba(11,14,20,0.85);
+    background: rgba(255,255,255,0.85);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
   }
@@ -76,7 +76,7 @@
     border: 1px solid var(--border);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 20px 60px -20px rgba(0,0,0,0.6);
+    box-shadow: 0 20px 50px -20px rgba(15,23,42,0.15);
   }
   .editor-titlebar{
     display:flex; align-items:center; gap:8px;
@@ -85,7 +85,7 @@
     border-bottom: 1px solid var(--border);
   }
   .dot{width:11px; height:11px; border-radius:50%;}
-  .dot.r{background:#e8785a;} .dot.y{background:#e8b339;} .dot.g{background:#7fe0b8;}
+  .dot.r{background:var(--coral);} .dot.y{background:var(--amber);} .dot.g{background:var(--mint);}
   .editor-tabs{display:flex; margin-left: 16px; font-family: var(--mono); font-size: 12px; color: var(--text-muted); gap:18px;}
   .editor-tabs .active{color: var(--text); border-bottom: 2px solid var(--mint); padding-bottom: 10px; margin-bottom:-10px;}
   .editor-body{padding: 28px 32px 36px; font-family: var(--mono); font-size: 14px; overflow-x:auto;}
@@ -93,9 +93,16 @@
   .kw{color: var(--coral);}
   .prop{color: var(--mint);}
   .str{color: var(--amber);}
-  .fn{color:#8ab4f8;}
+  .fn{color:#1d4ed8;}
   .cursor{display:inline-block; width:8px; height:16px; background:var(--mint); vertical-align:-3px; animation: blink 1s step-end infinite;}
   @keyframes blink{50%{opacity:0;}}
+  .code-line{opacity:0; transform: translateX(-6px); transition: opacity .3s ease, transform .3s ease;}
+  .code-line.show{opacity:1; transform:none;}
+  .cmt{color: var(--text-faint);}
+  .philosophy{
+    margin-top: 20px; padding-top: 18px; border-top: 1px dashed var(--border);
+    color: var(--text-muted); font-size: 14.5px; max-width: 560px;
+  }
   .hero-cta{margin-top: 28px; display:flex; gap: 14px; flex-wrap:wrap;}
   .btn{
     font-family: var(--mono); font-size: 13px;
@@ -104,8 +111,8 @@
     transition: border-color .15s, transform .1s;
   }
   .btn:hover{border-color: var(--mint); transform: translateY(-1px);}
-  .btn.primary{background: var(--mint); color: #0b1a14; border-color: var(--mint); font-weight:700;}
-  .btn.primary:hover{background:#93e8c5;}
+  .btn.primary{background: var(--mint); color: #ffffff; border-color: var(--mint); font-weight:700;}
+  .btn.primary:hover{background: var(--mint-dim);}
 
   /* SECTION HEADERS */
   section{padding: 64px 0; position:relative; z-index:1;}
@@ -147,6 +154,44 @@
     border-left: 2px solid var(--amber); padding-left: 10px; margin-top: 14px;
   }
 
+  /* CASE STUDY BLOCKS */
+  .case-study{
+    display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap:16px; margin: 20px 0;
+  }
+  .case-block .k{
+    font-family: var(--mono); font-size: 11px; text-transform:uppercase; letter-spacing:.04em;
+    color: var(--mint); margin-bottom: 6px;
+  }
+  .case-block p{font-size: 13.5px; color: var(--text-muted); max-width: none;}
+
+  /* PROCESS SECTION */
+  .process-strip{
+    display:flex; gap:16px; overflow-x:auto; padding-bottom: 8px;
+  }
+  .process-card{
+    flex: 0 0 200px;
+    border:1px dashed var(--border-strong); border-radius:8px;
+    background: var(--bg-elev);
+    padding: 18px 16px;
+    color: var(--text-faint);
+  }
+  .process-card .step{font-family: var(--mono); font-size:11px; color: var(--mint); margin-bottom:8px;}
+  .process-card p{font-size: 13px; color: var(--text-muted);}
+
+  .process-pairs{display:flex; flex-direction:column; gap:28px;}
+  .process-pair .pair-label{font-family: var(--mono); font-size:12px; color: var(--coral); margin-bottom:10px;}
+  .pair-images{display:grid; grid-template-columns: 1fr 1fr; gap:16px;}
+  .pair-images figure{margin:0; border:1px solid var(--border); border-radius:8px; overflow:hidden; background:var(--panel);}
+  .pair-images img{width:100%; display:block;}
+  .pair-images figcaption{
+    font-family: var(--mono); font-size:11px; color: var(--text-faint);
+    padding: 8px 12px; border-top:1px solid var(--border);
+  }
+  @media (max-width: 640px){
+    .pair-images{grid-template-columns: 1fr;}
+  }
+
   /* SKILLS */
   .skills-grid{display:grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); gap:14px;}
   .skill-card{
@@ -181,9 +226,10 @@
 
 <header>
   <nav class="wrap">
-    <div class="logo">&lt;<span>NISHIMWE Irankunda Divine</span> /&gt;</div>
+    <div class="logo">&lt;<span>Divine</span> /&gt;</div>
     <div class="navlinks">
       <a href="#projets">projets</a>
+      <a href="#processus">processus</a>
       <a href="#competences">competences</a>
       <a href="#contact">contact</a>
     </div>
@@ -201,14 +247,17 @@
         </div>
       </div>
       <div class="editor-body">
-<div><span class="ln">1</span><span class="kw">const</span> <span class="prop">developpeuse</span> = {</div>
-<div><span class="ln">2</span>&nbsp;&nbsp;nom: <span class="str">"NISHIMWE"</span>,</div>
-<div><span class="ln">3</span>&nbsp;&nbsp;role: <span class="str">"Développeuse web"</span>,</div>
-<div><span class="ln">4</span>&nbsp;&nbsp;stack: [<span class="str">"React"</span>, <span class="str">"JavaScript"</span>, <span class="str">"API REST"</span>],</div>
-<div><span class="ln">5</span>&nbsp;&nbsp;<span class="fn">construit</span>: () =&gt; <span class="str">"des interfaces claires et fonctionnelles"</span></div>
-<div><span class="ln">6</span>};<span class="cursor"></span></div>
+<div class="code-line"><span class="ln">1</span><span class="cmt">// design d'abord, code ensuite</span></div>
+<div class="code-line"><span class="ln">2</span><span class="kw">const</span> <span class="prop">developpeuse</span> = {</div>
+<div class="code-line"><span class="ln">3</span>&nbsp;&nbsp;nom: <span class="str">"NISHIMWE Irankunda Divine"</span>,</div>
+<div class="code-line"><span class="ln">4</span>&nbsp;&nbsp;role: <span class="str">"Développeuse web & designer"</span>,</div>
+<div class="code-line"><span class="ln">5</span>&nbsp;&nbsp;base: <span class="str">"Kigali, Rwanda"</span>,</div>
+<div class="code-line"><span class="ln">6</span>&nbsp;&nbsp;stack: [<span class="str">"React"</span>, <span class="str">"JavaScript"</span>, <span class="str">"API REST"</span>],</div>
+<div class="code-line"><span class="ln">7</span>&nbsp;&nbsp;<span class="fn">construit</span>: () =&gt; <span class="str">"des interfaces claires, pensées avant d'être codées"</span></div>
+<div class="code-line"><span class="ln">8</span>};<span class="cursor"></span></div>
       </div>
     </div>
+    <p class="philosophy">Ma formation en design m'a appris à me demander <em>pourquoi</em> avant <em>comment</em>. Chaque projet ci-dessous montre les deux couches : la décision d'interface, et la décision technique qui la fait tenir.</p>
     <div class="hero-cta">
       <a href="#projets" class="btn primary">Voir les projets</a>
       <a href="#contact" class="btn">Me contacter</a>
@@ -229,7 +278,24 @@
       </div>
       <div class="project-body">
         <h3>Dashboard météo interactif</h3>
-        <p>Dashboard météo avec historique des villes recherchées, bascule °C/°F, géolocalisation automatique et mode sombre/clair, connecté à une API météo publique.</p>
+        <div class="case-study">
+          <div class="case-block">
+            <div class="k">Problème</div>
+            <p>Les gens veulent une météo qui se souvient de leurs villes et s'adapte à leur environnement, sans réglages manuels répétés à chaque visite.</p>
+          </div>
+          <div class="case-block">
+            <div class="k">Décision design</div>
+            <p>Historique des villes visible en un coup d'œil, bascule °C/°F et mode sombre/clair accessibles sans quitter l'écran principal.</p>
+          </div>
+          <div class="case-block">
+            <div class="k">Décision technique</div>
+            <p>Géolocalisation automatique au chargement, appel à une API météo publique, état persistant géré côté client en React.</p>
+          </div>
+          <div class="case-block">
+            <div class="k">Résultat</div>
+            <p>Dashboard fonctionnel déployé sur Vercel, réutilisable comme base pour d'autres projets orientés données.</p>
+          </div>
+        </div>
         <div class="stack">
           <span class="chip">React</span>
           <span class="chip">API publique</span>
@@ -237,30 +303,90 @@
         </div>
         <div class="project-links">
           <a href="https://github.com/DivineNID/weather-dashboard" target="_blank" rel="noopener">Code source →</a>
-          <a href="#" target="_blank" rel="noopener">Démo live →</a>
+          <a href="https://weather-dashboard-rust-six.vercel.app/" target="_blank" rel="noopener">Démo live →</a>
         </div>
-        <p class="placeholder-note">https://weather-dashboard-rust-six.vercel.app/</p>
       </div>
     </div>
 
     <div class="project">
       <div class="project-head">
-        <span class="filename">projet-2.jsx</span>
-        <span>à venir</span>
+        <span class="filename">ecoride.jsx</span>
+        <span>déployé</span>
       </div>
       <div class="project-body">
-        <h3>Prochain projet</h3>
-        <p>Décris ici ton deuxième projet : le problème résolu, les fonctionnalités clés, et ce que tu as appris en le construisant.</p>
+        <h3>EcoRide — covoiturage écologique</h3>
+        <div class="case-study">
+          <div class="case-block">
+            <div class="k">Problème</div>
+            <p>Faciliter des trajets partagés économiques et écologiques, avec un système clair de recherche, de réservation et de confiance entre passagers.</p>
+          </div>
+          <div class="case-block">
+            <div class="k">Décision design</div>
+            <p>Maquettes conçues sur Figma en partant de wireframes basse fidélité, avant de passer à une identité verte associée à l'écologie, avec notes et avis passagers visibles pour installer la confiance.</p>
+          </div>
+          <div class="case-block">
+            <div class="k">Décision technique</div>
+            <p>Frontend en React et Tailwind CSS, backend en PHP/Laravel avec MySQL et MongoDB, gestion de projet sur Trello, déploiement sur Fly.io.</p>
+          </div>
+          <div class="case-block">
+            <div class="k">Résultat</div>
+            <p>Application complète déployée : recherche de trajets, fiche détaillée par covoiturage, création de compte et connexion fonctionnelles.</p>
+          </div>
+        </div>
         <div class="stack">
-          <span class="chip">Stack à définir</span>
+          <span class="chip">React</span>
+          <span class="chip">Tailwind CSS</span>
+          <span class="chip">Laravel</span>
+          <span class="chip">MySQL</span>
+          <span class="chip">MongoDB</span>
+          <span class="chip">Figma</span>
+          <span class="chip">Fly.io</span>
         </div>
         <div class="project-links">
-          <a href="#" target="_blank" rel="noopener">Code source →</a>
-          <a href="#" target="_blank" rel="noopener">Démo live →</a>
+          <a href="https://ecoride-icy-pond-7336.fly.dev/" target="_blank" rel="noopener">Démo live →</a>
         </div>
-        <p class="placeholder-note">// carte à dupliquer pour chaque nouveau projet</p>
       </div>
     </div>
+  </section>
+
+  <section id="processus" class="wrap">
+    <div class="section-head">
+      <span class="tag">01.5</span>
+      <h2>Processus</h2>
+      <div class="rule"></div>
+    </div>
+    <p style="color:var(--text-muted); font-size:14.5px; max-width:620px; margin-bottom:24px;">Avant le code, il y a des choix. Ces paires montrent le chemin entre le wireframe pensé sur Figma et l'interface finale du projet EcoRide.</p>
+    <div class="process-pairs">
+      <div class="process-pair">
+        <div class="pair-label">// page d'accueil</div>
+        <div class="pair-images">
+          <figure><img src="img/wireframe-accueil.png" alt="Wireframe de la page d'accueil EcoRide"><figcaption>wireframe</figcaption></figure>
+          <figure><img src="img/final-accueil.png" alt="Version finale de la page d'accueil EcoRide"><figcaption>résultat final</figcaption></figure>
+        </div>
+      </div>
+      <div class="process-pair">
+        <div class="pair-label">// page de connexion</div>
+        <div class="pair-images">
+          <figure><img src="img/wireframe-connexion.png" alt="Wireframe de la page de connexion EcoRide"><figcaption>wireframe</figcaption></figure>
+          <figure><img src="img/final-connexion.png" alt="Version finale de la page de connexion EcoRide"><figcaption>résultat final</figcaption></figure>
+        </div>
+      </div>
+      <div class="process-pair">
+        <div class="pair-label">// résultats de covoiturage</div>
+        <div class="pair-images">
+          <figure><img src="img/wireframe-covoiturage.png" alt="Wireframe des résultats de covoiturage EcoRide"><figcaption>wireframe</figcaption></figure>
+          <figure><img src="img/final-covoiturage.png" alt="Version finale des résultats de covoiturage EcoRide"><figcaption>résultat final</figcaption></figure>
+        </div>
+      </div>
+      <div class="process-pair">
+        <div class="pair-label">// création de compte</div>
+        <div class="pair-images">
+          <figure><img src="img/wireframe-creation-compte.png" alt="Wireframe de la création de compte EcoRide"><figcaption>wireframe</figcaption></figure>
+          <figure><img src="img/final-creation-compte.png" alt="Version finale de la création de compte EcoRide"><figcaption>résultat final</figcaption></figure>
+        </div>
+      </div>
+    </div>
+    <p class="placeholder-note">// la page "détails d'un covoiturage" n'a pas de wireframe associé — ajoute-la si tu en as un</p>
   </section>
 
   <section id="competences" class="wrap">
@@ -270,10 +396,11 @@
       <div class="rule"></div>
     </div>
     <div class="skills-grid">
-      <div class="skill-card"><div class="label">Frontend</div><div class="value">HTML, CSS, JavaScript, React</div></div>
-      <div class="skill-card"><div class="label">Outils</div><div class="value">Git, GitHub, Vercel</div></div>
-      <div class="skill-card"><div class="label">API</div><div class="value">Intégration d'API REST publiques</div></div>
-      <div class="skill-card"><div class="label">Autre</div><div class="value">À compléter selon ton profil</div></div>
+      <div class="skill-card"><div class="label">Frontend</div><div class="value">HTML, CSS, JavaScript, React, Tailwind CSS</div></div>
+      <div class="skill-card"><div class="label">Backend</div><div class="value">PHP, Laravel, MySQL, MongoDB</div></div>
+      <div class="skill-card"><div class="label">Design</div><div class="value">Figma — wireframes et maquettes</div></div>
+      <div class="skill-card"><div class="label">Outils</div><div class="value">Git, GitHub, Trello, VS Code, XAMPP</div></div>
+      <div class="skill-card"><div class="label">Déploiement</div><div class="value">Vercel, Fly.io</div></div>
     </div>
   </section>
 
@@ -288,18 +415,27 @@
       <div class="contact-links">
         <a href="mailto:divine.nishimwe21@gmail.com" class="btn primary">Envoyer un email</a>
         <a href="https://github.com/DivineNID" target="_blank" rel="noopener" class="btn">GitHub</a>
-        <a href="#" target="_blank" rel="noopener" class="btn">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/irankunda-divine-nishimwe-357846345" target="_blank" rel="noopener" class="btn">LinkedIn</a>
       </div>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap">© <span id="year"></span> Ton Nom — construit avec HTML, CSS &amp; JS</div>
+  <div class="wrap">© <span id="year"></span> NISHIMWE Irankunda Divine — construit avec HTML, CSS &amp; JS</div>
 </footer>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // reveal séquentiel des lignes du hero, façon "compilation"
+  document.querySelectorAll('.code-line').forEach((line, i) => {
+    setTimeout(() => line.classList.add('show'), 120 * i);
+  });
+
+  // clin d'œil pour qui ouvre la console — un vrai signe de dev
+  console.log('%cSalut ! Tu regardes sous le capot, comme moi 👋', 'color:#16a34a; font-family:monospace; font-size:13px;');
+  console.log('%cKigali → le web. Envoie-moi un message si un projet te fait envie.', 'color:#57647a; font-family:monospace; font-size:12px;');
 </script>
 
 </body>
