@@ -159,7 +159,7 @@
     margin: 18px 0 4px;
   }
   .project-gallery figure{margin:0; border:1px solid var(--border); border-radius:6px; overflow:hidden; background:var(--bg-elev);}
-  .project-gallery img{width:100%; display:block;}
+  .project-gallery img{width:100%; height:150px; object-fit:cover; object-position:top; display:block;}
   .project-gallery figcaption{
     font-family: var(--mono); font-size:10.5px; color: var(--text-faint);
     padding: 6px 10px; border-top:1px solid var(--border);
@@ -195,9 +195,9 @@
 
   .process-pairs{display:flex; flex-direction:column; gap:28px;}
   .process-pair .pair-label{font-family: var(--mono); font-size:12px; color: var(--coral); margin-bottom:10px;}
-  .pair-images{display:grid; grid-template-columns: 1fr 1fr; gap:16px;}
+  .pair-images{display:grid; grid-template-columns: 1fr 1fr; gap:16px; align-items:start;}
   .pair-images figure{margin:0; border:1px solid var(--border); border-radius:8px; overflow:hidden; background:var(--panel);}
-  .pair-images img{width:100%; display:block;}
+  .pair-images img{width:100%; height:200px; object-fit:cover; object-position:top; display:block;}
   .pair-images figcaption{
     font-family: var(--mono); font-size:11px; color: var(--text-faint);
     padding: 8px 12px; border-top:1px solid var(--border);
@@ -322,14 +322,46 @@
       </div>
     </div>
 
-    <div class="project">
+    <div class="project" id="processus">
       <div class="project-head">
         <span class="filename">ecoride.jsx</span>
         <span>déployé</span>
       </div>
       <div class="project-body">
         <h3>EcoRide — covoiturage écologique</h3>
-        <div class="case-study">
+        <p style="color:var(--text-muted); font-size:14px; max-width:620px; margin-bottom:16px;">Avant le code, il y a des choix. Ces paires montrent le chemin entre le wireframe pensé sur Figma et l'interface finale.</p>
+        <div class="process-pairs">
+          <div class="process-pair">
+            <div class="pair-label">// page d'accueil</div>
+            <div class="pair-images">
+              <figure><img src="img/wireframe-accueil.png" alt="Wireframe de la page d'accueil EcoRide"><figcaption>wireframe</figcaption></figure>
+              <figure><img src="img/final-accueil.png" alt="Version finale de la page d'accueil EcoRide"><figcaption>résultat final</figcaption></figure>
+            </div>
+          </div>
+          <div class="process-pair">
+            <div class="pair-label">// page de connexion</div>
+            <div class="pair-images">
+              <figure><img src="img/wireframe-connexion.png" alt="Wireframe de la page de connexion EcoRide"><figcaption>wireframe</figcaption></figure>
+              <figure><img src="img/final-connexion.png" alt="Version finale de la page de connexion EcoRide"><figcaption>résultat final</figcaption></figure>
+            </div>
+          </div>
+          <div class="process-pair">
+            <div class="pair-label">// résultats de covoiturage</div>
+            <div class="pair-images">
+              <figure><img src="img/wireframe-covoiturage.png" alt="Wireframe des résultats de covoiturage EcoRide"><figcaption>wireframe</figcaption></figure>
+              <figure><img src="img/final-covoiturage.png" alt="Version finale des résultats de covoiturage EcoRide"><figcaption>résultat final</figcaption></figure>
+            </div>
+          </div>
+          <div class="process-pair">
+            <div class="pair-label">// création de compte</div>
+            <div class="pair-images">
+              <figure><img src="img/wireframe-creation-compte.png" alt="Wireframe de la création de compte EcoRide"><figcaption>wireframe</figcaption></figure>
+              <figure><img src="img/final-creation-compte.png" alt="Version finale de la création de compte EcoRide"><figcaption>résultat final</figcaption></figure>
+            </div>
+          </div>
+        </div>
+        <p class="placeholder-note"></p>
+        <div class="case-study" style="margin-top:24px;">
           <div class="case-block">
             <div class="k">Problème</div>
             <p>Faciliter des trajets partagés économiques et écologiques, avec un système clair de recherche, de réservation et de confiance entre passagers.</p>
@@ -409,46 +441,6 @@
         </div>
       </div>
     </div>
-  </section>
-
-  <section id="processus" class="wrap">
-    <div class="section-head">
-      <span class="tag">01.5</span>
-      <h2>Processus</h2>
-      <div class="rule"></div>
-    </div>
-    <p style="color:var(--text-muted); font-size:14.5px; max-width:620px; margin-bottom:24px;">Avant le code, il y a des choix. Ces paires montrent le chemin entre le wireframe pensé sur Figma et l'interface finale du projet EcoRide.</p>
-    <div class="process-pairs">
-      <div class="process-pair">
-        <div class="pair-label">// page d'accueil</div>
-        <div class="pair-images">
-          <figure><img src="img/wireframe-accueil.png" alt="Wireframe de la page d'accueil EcoRide"><figcaption>wireframe</figcaption></figure>
-          <figure><img src="img/final-accueil.png" alt="Version finale de la page d'accueil EcoRide"><figcaption>résultat final</figcaption></figure>
-        </div>
-      </div>
-      <div class="process-pair">
-        <div class="pair-label">// page de connexion</div>
-        <div class="pair-images">
-          <figure><img src="img/wireframe-connexion.png" alt="Wireframe de la page de connexion EcoRide"><figcaption>wireframe</figcaption></figure>
-          <figure><img src="img/final-connexion.png" alt="Version finale de la page de connexion EcoRide"><figcaption>résultat final</figcaption></figure>
-        </div>
-      </div>
-      <div class="process-pair">
-        <div class="pair-label">// résultats de covoiturage</div>
-        <div class="pair-images">
-          <figure><img src="img/wireframe-covoiturage.png" alt="Wireframe des résultats de covoiturage EcoRide"><figcaption>wireframe</figcaption></figure>
-          <figure><img src="img/final-covoiturage.png" alt="Version finale des résultats de covoiturage EcoRide"><figcaption>résultat final</figcaption></figure>
-        </div>
-      </div>
-      <div class="process-pair">
-        <div class="pair-label">// création de compte</div>
-        <div class="pair-images">
-          <figure><img src="img/wireframe-creation-compte.png" alt="Wireframe de la création de compte EcoRide"><figcaption>wireframe</figcaption></figure>
-          <figure><img src="img/final-creation-compte.png" alt="Version finale de la création de compte EcoRide"><figcaption>résultat final</figcaption></figure>
-        </div>
-      </div>
-    </div>
-    <p class="placeholder-note">// la page "détails d'un covoiturage" n'a pas de wireframe associé — ajoute-la si tu en as un</p>
   </section>
 
   <section id="competences" class="wrap">
