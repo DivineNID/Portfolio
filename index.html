@@ -154,6 +154,20 @@
     border-left: 2px solid var(--amber); padding-left: 10px; margin-top: 14px;
   }
 
+  .project-gallery{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap:12px;
+    margin: 18px 0 4px;
+  }
+  .project-gallery figure{margin:0; border:1px solid var(--border); border-radius:6px; overflow:hidden; background:var(--bg-elev);}
+  .project-gallery img{width:100%; display:block;}
+  .project-gallery figcaption{
+    font-family: var(--mono); font-size:10.5px; color: var(--text-faint);
+    padding: 6px 10px; border-top:1px solid var(--border);
+  }
+  @media (max-width: 640px){
+    .project-gallery{grid-template-columns: 1fr 1fr;}
+  }
+
   /* CASE STUDY BLOCKS */
   .case-study{
     display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
@@ -344,6 +358,54 @@
         </div>
         <div class="project-links">
           <a href="https://ecoride-icy-pond-7336.fly.dev/" target="_blank" rel="noopener">Démo live →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <span class="filename">cinephoria.php</span>
+        <span>déployé</span>
+      </div>
+      <div class="project-body">
+        <h3>Cinéphoria — réservation de cinéma</h3>
+        <div class="case-study">
+          <div class="case-block">
+            <div class="k">Problème</div>
+            <p>Une chaîne de cinémas avait besoin d'une plateforme complète pour présenter sa programmation, vendre des billets en ligne et gérer ses salles, employés et incidents techniques, avec trois publics différents : visiteurs, employés et administrateurs.</p>
+          </div>
+          <div class="case-block">
+            <div class="k">Décision design</div>
+            <p>Charte graphique dédiée (bleu nuit, or, bleu azur) pensée sur Figma avant tout développement, avec un parcours de réservation en 3 étapes clarifié et des espaces distincts pour chaque rôle utilisateur.</p>
+          </div>
+          <div class="case-block">
+            <div class="k">Décision technique</div>
+            <p>Backend PHP/PDO avec MySQL pour les données transactionnelles et MongoDB pour le tableau de bord, complété par une application mobile Flutter (billets, QR code) et une application bureautique Python pour la gestion des incidents.</p>
+          </div>
+          <div class="case-block">
+            <div class="k">Résultat</div>
+            <p>Écosystème de trois applications interconnectées, déployé avec authentification JWT sécurisée, gestion de projet suivie sur Trello et dépôt Git organisé en branches main/develop/feature.</p>
+          </div>
+        </div>
+        <div class="project-gallery">
+          <figure><img src="img/cinephoria-accueil.png" alt="Page d'accueil de Cinéphoria"><figcaption>accueil</figcaption></figure>
+          <figure><img src="img/cinephoria-reservation.png" alt="Page de réservation de Cinéphoria"><figcaption>réservation</figcaption></figure>
+          <figure><img src="img/cinephoria-admin.png" alt="Espace administrateur de Cinéphoria"><figcaption>espace admin</figcaption></figure>
+        </div>
+        <div class="stack">
+          <span class="chip">HTML5</span>
+          <span class="chip">CSS3 / Bootstrap</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">PHP</span>
+          <span class="chip">MySQL</span>
+          <span class="chip">MongoDB</span>
+          <span class="chip">Flutter</span>
+          <span class="chip">Python</span>
+          <span class="chip">Fly.io</span>
+        </div>
+        <div class="project-links">
+          <a href="https://cinephoria-floral-wave-9758.fly.dev/" target="_blank" rel="noopener">Démo live →</a>
+          <a href="https://github.com/DivineNID/cinephoria.git" target="_blank" rel="noopener">Code source →</a>
         </div>
       </div>
     </div>
