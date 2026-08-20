@@ -82,6 +82,13 @@
     content:""; position:absolute; left:0; right:0; bottom:-8px; height:2px;
     background: var(--mint); border-radius:2px;
   }
+  .lang-toggle{
+    font-family: var(--mono); font-size: 12px; color: var(--text-muted);
+    border: 1px solid var(--border-strong); border-radius: 20px;
+    padding: 4px 12px; cursor:pointer; background:transparent;
+    transition: border-color .15s, color .15s;
+  }
+  .lang-toggle:hover{border-color: var(--mint); color: var(--mint);}
 
   /* HERO — code editor window */
   .hero{padding: 72px 0 56px; position:relative; z-index:1;}
@@ -289,12 +296,15 @@
 
 <header>
   <nav class="wrap">
-    <div class="logo">&lt;<span>Divine</span>/&gt;</div>
-    <div class="navlinks">
-      <a href="#projets">projets</a>
-      <a href="#processus">processus</a>
-      <a href="#competences">competences</a>
-      <a href="#contact">contact</a>
+    <div class="logo">&lt;<span>Divine</span> /&gt;</div>
+    <div style="display:flex; align-items:center; gap:24px;">
+      <div class="navlinks">
+        <a href="#projets" data-i18n="nav-work">projets</a>
+        <a href="#processus" data-i18n="nav-process">processus</a>
+        <a href="#competences" data-i18n="nav-skills">competences</a>
+        <a href="#contact" data-i18n="nav-contact">contact</a>
+      </div>
+      <button id="lang-toggle" class="lang-toggle" aria-label="Switch language">EN</button>
     </div>
   </nav>
 </header>
@@ -310,53 +320,53 @@
         </div>
       </div>
       <div class="editor-body">
-<div class="code-line"><span class="ln">1</span><span class="cmt">// design d'abord, code ensuite</span></div>
+<div class="code-line"><span class="ln">1</span><span class="cmt" data-i18n="hero-comment">// design d'abord, code ensuite</span></div>
 <div class="code-line"><span class="ln">2</span><span class="kw">const</span> <span class="prop">developpeuse</span> = {</div>
 <div class="code-line"><span class="ln">3</span>&nbsp;&nbsp;nom: <span class="str">"NISHIMWE Irankunda Divine"</span>,</div>
-<div class="code-line"><span class="ln">4</span>&nbsp;&nbsp;role: <span class="str">"Développeuse web & designer"</span>,</div>
+<div class="code-line"><span class="ln">4</span>&nbsp;&nbsp;role: <span class="str" data-i18n="hero-role">"Développeuse web & designer"</span>,</div>
 <div class="code-line"><span class="ln">5</span>&nbsp;&nbsp;base: <span class="str">"France"</span>,</div>
 <div class="code-line"><span class="ln">6</span>&nbsp;&nbsp;stack: [<span class="str">"React"</span>, <span class="str">"JavaScript"</span>, <span class="str">"API REST"</span>],</div>
-<div class="code-line"><span class="ln">7</span>&nbsp;&nbsp;<span class="fn">construit</span>: () =&gt; <span class="str">"des interfaces claires, pensées avant d'être codées"</span></div>
+<div class="code-line"><span class="ln">7</span>&nbsp;&nbsp;<span class="fn" data-i18n="hero-fn-name">construit</span>: () =&gt; <span class="str" data-i18n="hero-fn-return">"des interfaces claires, pensées avant d'être codées"</span></div>
 <div class="code-line"><span class="ln">8</span>};<span class="cursor"></span></div>
       </div>
     </div>
-    <p class="philosophy">Ma formation en design m'a appris à me demander <em>pourquoi</em> avant <em>comment</em>. Chaque projet ci-dessous montre les deux couches : la décision d'interface, et la décision technique qui la fait tenir.</p>
+    <p class="philosophy" data-i18n="hero-philosophy">Ma formation en design m'a appris à me demander <em>pourquoi</em> avant <em>comment</em>. Chaque projet ci-dessous montre les deux couches : la décision d'interface, et la décision technique qui la fait tenir.</p>
     <div class="hero-cta">
-      <a href="#projets" class="btn primary">Voir les projets <span class="arrow">→</span></a>
-      <a href="#contact" class="btn">Me contacter <span class="arrow">→</span></a>
+      <a href="#projets" class="btn primary"><span data-i18n="hero-cta-projects">Voir les projets</span> <span class="arrow">→</span></a>
+      <a href="#contact" class="btn"><span data-i18n="hero-cta-contact">Me contacter</span> <span class="arrow">→</span></a>
     </div>
   </section>
 
   <section id="projets" class="wrap">
     <div class="section-head">
       <span class="tag">01</span>
-      <h2>Projets</h2>
+      <h2 data-i18n="section-projects">Projets</h2>
       <div class="rule"></div>
     </div>
 
     <div class="project">
       <div class="project-head">
         <span class="filename">weather-dashboard.jsx</span>
-        <span>déployé</span>
+        <span data-i18n="status-deployed">déployé</span>
       </div>
       <div class="project-body">
-        <h3>Dashboard météo interactif</h3>
+        <h3 data-i18n="weather-title">Dashboard météo interactif</h3>
         <div class="case-study">
           <div class="case-block">
-            <div class="k">Problème</div>
-            <p>Les gens veulent une météo qui se souvient de leurs villes et s'adapte à leur environnement, sans réglages manuels répétés à chaque visite.</p>
+            <div class="k" data-i18n="label-problem">Problème</div>
+            <p data-i18n="weather-problem">Les gens veulent une météo qui se souvient de leurs villes et s'adapte à leur environnement, sans réglages manuels répétés à chaque visite.</p>
           </div>
           <div class="case-block">
-            <div class="k">Décision design</div>
-            <p>Historique des villes visible en un coup d'œil, bascule °C/°F et mode sombre/clair accessibles sans quitter l'écran principal.</p>
+            <div class="k" data-i18n="label-design">Décision design</div>
+            <p data-i18n="weather-design">Historique des villes visible en un coup d'œil, bascule °C/°F et mode sombre/clair accessibles sans quitter l'écran principal.</p>
           </div>
           <div class="case-block">
-            <div class="k">Décision technique</div>
-            <p>Géolocalisation automatique au chargement, appel à une API météo publique, état persistant géré côté client en React.</p>
+            <div class="k" data-i18n="label-tech">Décision technique</div>
+            <p data-i18n="weather-tech">Géolocalisation automatique au chargement, appel à une API météo publique, état persistant géré côté client en React.</p>
           </div>
           <div class="case-block">
-            <div class="k">Résultat</div>
-            <p>Dashboard fonctionnel déployé sur Vercel, réutilisable comme base pour d'autres projets orientés données.</p>
+            <div class="k" data-i18n="label-result">Résultat</div>
+            <p data-i18n="weather-result">Dashboard fonctionnel déployé sur Vercel, réutilisable comme base pour d'autres projets orientés données.</p>
           </div>
         </div>
         <div class="stack">
@@ -365,8 +375,8 @@
           <span class="chip">Vercel</span>
         </div>
         <div class="project-links">
-          <a href="https://github.com/DivineNID/weather-dashboard" target="_blank" rel="noopener">Code source →</a>
-          <a href="https://weather-dashboard-rust-six.vercel.app/" target="_blank" rel="noopener">Démo live →</a>
+          <a href="https://github.com/DivineNID/weather-dashboard" target="_blank" rel="noopener" data-i18n="link-code">Code source →</a>
+          <a href="https://weather-dashboard-rust-six.vercel.app/" target="_blank" rel="noopener" data-i18n="link-demo">Démo live →</a>
         </div>
       </div>
     </div>
@@ -374,34 +384,34 @@
     <div class="project" id="processus">
       <div class="project-head">
         <span class="filename">ecoride.jsx</span>
-        <span>déployé</span>
+        <span data-i18n="status-deployed">déployé</span>
       </div>
       <div class="project-body">
-        <h3>EcoRide — covoiturage écologique</h3>
-        <p style="color:var(--text-muted); font-size:14px; max-width:620px; margin-bottom:16px;">Conçu sur Figma avant tout développement, avec une identité verte associée à l'écologie.</p>
+        <h3>EcoRide — <span data-i18n="ecoride-subtitle">covoiturage écologique</span></h3>
+        <p style="color:var(--text-muted); font-size:14px; max-width:620px; margin-bottom:16px;" data-i18n="ecoride-intro">Conçu sur Figma avant tout développement, avec une identité verte associée à l'écologie.</p>
         <div class="project-gallery">
-          <figure><img src="img/final-accueil.png" alt="Page d'accueil EcoRide"><figcaption>accueil</figcaption></figure>
-          <figure><img src="img/final-connexion.png" alt="Page de connexion EcoRide"><figcaption>connexion</figcaption></figure>
-          <figure><img src="img/final-covoiturage.png" alt="Résultats de covoiturage EcoRide"><figcaption>résultats de covoiturage</figcaption></figure>
-          <figure><img src="img/final-creation-compte.png" alt="Création de compte EcoRide"><figcaption>création de compte</figcaption></figure>
+          <figure><img src="img/final-accueil.png" alt="Page d'accueil EcoRide"><figcaption data-i18n="caption-home">accueil</figcaption></figure>
+          <figure><img src="img/final-connexion.png" alt="Page de connexion EcoRide"><figcaption data-i18n="caption-login">connexion</figcaption></figure>
+          <figure><img src="img/final-covoiturage.png" alt="Résultats de covoiturage EcoRide"><figcaption data-i18n="caption-results">résultats de covoiturage</figcaption></figure>
+          <figure><img src="img/final-creation-compte.png" alt="Création de compte EcoRide"><figcaption data-i18n="caption-signup">création de compte</figcaption></figure>
         </div>
         <p class="placeholder-note"></p>
         <div class="case-study" style="margin-top:24px;">
           <div class="case-block">
-            <div class="k">Problème</div>
-            <p>Faciliter des trajets partagés économiques et écologiques, avec un système clair de recherche, de réservation et de confiance entre passagers.</p>
+            <div class="k" data-i18n="label-problem">Problème</div>
+            <p data-i18n="ecoride-problem">Faciliter des trajets partagés économiques et écologiques, avec un système clair de recherche, de réservation et de confiance entre passagers.</p>
           </div>
           <div class="case-block">
-            <div class="k">Décision design</div>
-            <p>Maquettes conçues sur Figma en partant de wireframes basse fidélité, avant de passer à une identité verte associée à l'écologie, avec notes et avis passagers visibles pour installer la confiance.</p>
+            <div class="k" data-i18n="label-design">Décision design</div>
+            <p data-i18n="ecoride-design">Maquettes conçues sur Figma en partant de wireframes basse fidélité, avant de passer à une identité verte associée à l'écologie, avec notes et avis passagers visibles pour installer la confiance.</p>
           </div>
           <div class="case-block">
-            <div class="k">Décision technique</div>
-            <p>Frontend en React et Tailwind CSS, backend en PHP/Laravel avec MySQL et MongoDB, gestion de projet sur Trello, déploiement sur Fly.io.</p>
+            <div class="k" data-i18n="label-tech">Décision technique</div>
+            <p data-i18n="ecoride-tech">Frontend en React et Tailwind CSS, backend en PHP/Laravel avec MySQL et MongoDB, gestion de projet sur Trello, déploiement sur Fly.io.</p>
           </div>
           <div class="case-block">
-            <div class="k">Résultat</div>
-            <p>Application complète déployée : recherche de trajets, fiche détaillée par covoiturage, création de compte et connexion fonctionnelles.</p>
+            <div class="k" data-i18n="label-result">Résultat</div>
+            <p data-i18n="ecoride-result">Application complète déployée : recherche de trajets, fiche détaillée par covoiturage, création de compte et connexion fonctionnelles.</p>
           </div>
         </div>
         <div class="stack">
@@ -422,32 +432,32 @@
     <div class="project">
       <div class="project-head">
         <span class="filename">cinephoria.php</span>
-        <span>déployé</span>
+        <span data-i18n="status-deployed">déployé</span>
       </div>
       <div class="project-body">
-        <h3>Cinéphoria — réservation de cinéma</h3>
+        <h3>Cinéphoria — <span data-i18n="cinephoria-subtitle">réservation de cinéma</span></h3>
         <div class="case-study">
           <div class="case-block">
-            <div class="k">Problème</div>
-            <p>Une chaîne de cinémas avait besoin d'une plateforme complète pour présenter sa programmation, vendre des billets en ligne et gérer ses salles, employés et incidents techniques, avec trois publics différents : visiteurs, employés et administrateurs.</p>
+            <div class="k" data-i18n="label-problem">Problème</div>
+            <p data-i18n="cinephoria-problem">Une chaîne de cinémas avait besoin d'une plateforme complète pour présenter sa programmation, vendre des billets en ligne et gérer ses salles, employés et incidents techniques, avec trois publics différents : visiteurs, employés et administrateurs.</p>
           </div>
           <div class="case-block">
-            <div class="k">Décision design</div>
-            <p>Charte graphique dédiée (bleu nuit, or, bleu azur) pensée sur Figma avant tout développement, avec un parcours de réservation en 3 étapes clarifié et des espaces distincts pour chaque rôle utilisateur.</p>
+            <div class="k" data-i18n="label-design">Décision design</div>
+            <p data-i18n="cinephoria-design">Charte graphique dédiée (bleu nuit, or, bleu azur) pensée sur Figma avant tout développement, avec un parcours de réservation en 3 étapes clarifié et des espaces distincts pour chaque rôle utilisateur.</p>
           </div>
           <div class="case-block">
-            <div class="k">Décision technique</div>
-            <p>Backend PHP/PDO avec MySQL pour les données transactionnelles et MongoDB pour le tableau de bord, complété par une application mobile Flutter (billets, QR code) et une application bureautique Python pour la gestion des incidents.</p>
+            <div class="k" data-i18n="label-tech">Décision technique</div>
+            <p data-i18n="cinephoria-tech">Backend PHP/PDO avec MySQL pour les données transactionnelles et MongoDB pour le tableau de bord, complété par une application mobile Flutter (billets, QR code) et une application bureautique Python pour la gestion des incidents.</p>
           </div>
           <div class="case-block">
-            <div class="k">Résultat</div>
-            <p>Écosystème de trois applications interconnectées, déployé avec authentification JWT sécurisée, gestion de projet suivie sur Trello et dépôt Git organisé en branches main/develop/feature.</p>
+            <div class="k" data-i18n="label-result">Résultat</div>
+            <p data-i18n="cinephoria-result">Écosystème de trois applications interconnectées, déployé avec authentification JWT sécurisée, gestion de projet suivie sur Trello et dépôt Git organisé en branches main/develop/feature.</p>
           </div>
         </div>
         <div class="project-gallery">
-          <figure><img src="img/cinephoria-accueil.png" alt="Page d'accueil de Cinéphoria"><figcaption>accueil</figcaption></figure>
-          <figure><img src="img/cinephoria-reservation.png" alt="Page de réservation de Cinéphoria"><figcaption>réservation</figcaption></figure>
-          <figure><img src="img/cinephoria-admin.png" alt="Espace administrateur de Cinéphoria"><figcaption>espace admin</figcaption></figure>
+          <figure><img src="img/cinephoria-accueil.png" alt="Page d'accueil de Cinéphoria"><figcaption data-i18n="caption-home">accueil</figcaption></figure>
+          <figure><img src="img/cinephoria-reservation.png" alt="Page de réservation de Cinéphoria"><figcaption data-i18n="caption-booking">réservation</figcaption></figure>
+          <figure><img src="img/cinephoria-admin.png" alt="Espace administrateur de Cinéphoria"><figcaption data-i18n="caption-admin">espace admin</figcaption></figure>
         </div>
         <div class="stack">
           <span class="chip">HTML5</span>
@@ -461,8 +471,8 @@
           <span class="chip">Fly.io</span>
         </div>
         <div class="project-links">
-          <a href="https://cinephoria-frontend-didi.fly.dev/" target="_blank" rel="noopener">Démo live →</a>
-          <a href="https://github.com/DivineNID/cinephoria.git" target="_blank" rel="noopener">Code source →</a>
+          <a href="https://cinephoria-frontend-didi.fly.dev/" target="_blank" rel="noopener" data-i18n="link-demo">Démo live →</a>
+          <a href="https://github.com/DivineNID/cinephoria.git" target="_blank" rel="noopener" data-i18n="link-code">Code source →</a>
         </div>
       </div>
     </div>
@@ -471,35 +481,35 @@
   <section id="competences" class="wrap">
     <div class="section-head">
       <span class="tag amber">02</span>
-      <h2>Compétences</h2>
+      <h2 data-i18n="section-skills">Compétences</h2>
       <div class="rule"></div>
     </div>
     <table class="skills-table">
       <thead>
         <tr>
-          <th>Outil</th>
-          <th>Catégorie</th>
-          <th>Usage</th>
+          <th data-i18n="th-tool">Outil</th>
+          <th data-i18n="th-category">Catégorie</th>
+          <th data-i18n="th-usage">Usage</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td class="tool"><span class="cat-dot coral"></span>React</td><td>Frontend</td><td>Quotidien</td></tr>
-        <tr><td class="tool"><span class="cat-dot coral"></span>JavaScript</td><td>Frontend</td><td>Quotidien</td></tr>
-        <tr><td class="tool"><span class="cat-dot coral"></span>HTML / CSS</td><td>Frontend</td><td>Quotidien</td></tr>
-        <tr><td class="tool"><span class="cat-dot coral"></span>Tailwind CSS</td><td>Frontend</td><td>En projets</td></tr>
-        <tr><td class="tool"><span class="cat-dot mint"></span>PHP</td><td>Backend</td><td>En projets</td></tr>
-        <tr><td class="tool"><span class="cat-dot mint"></span>Laravel</td><td>Backend</td><td>En projets</td></tr>
-        <tr><td class="tool"><span class="cat-dot mint"></span>MySQL</td><td>Backend</td><td>En projets</td></tr>
-        <tr><td class="tool"><span class="cat-dot mint"></span>MongoDB</td><td>Backend</td><td>En projets</td></tr>
-        <tr><td class="tool"><span class="cat-dot amber"></span>Figma</td><td>Design</td><td>En projets</td></tr>
-        <tr><td class="tool"><span class="cat-dot neutral"></span>Git / GitHub</td><td>Outils</td><td>Quotidien</td></tr>
-        <tr><td class="tool"><span class="cat-dot neutral"></span>Trello</td><td>Outils</td><td>En projets</td></tr>
-        <tr><td class="tool"><span class="cat-dot neutral"></span>VS Code</td><td>Outils</td><td>Quotidien</td></tr>
-        <tr><td class="tool"><span class="cat-dot mint"></span>Vercel</td><td>Déploiement</td><td>Quotidien</td></tr>
-        <tr><td class="tool"><span class="cat-dot mint"></span>Fly.io</td><td>Déploiement</td><td>En projets</td></tr>
+        <tr><td class="tool"><span class="cat-dot coral"></span>React</td><td data-i18n="cat-frontend">Frontend</td><td data-i18n="usage-daily">Quotidien</td></tr>
+        <tr><td class="tool"><span class="cat-dot coral"></span>JavaScript</td><td data-i18n="cat-frontend">Frontend</td><td data-i18n="usage-daily">Quotidien</td></tr>
+        <tr><td class="tool"><span class="cat-dot coral"></span>HTML / CSS</td><td data-i18n="cat-frontend">Frontend</td><td data-i18n="usage-daily">Quotidien</td></tr>
+        <tr><td class="tool"><span class="cat-dot coral"></span>Tailwind CSS</td><td data-i18n="cat-frontend">Frontend</td><td data-i18n="usage-projects">En projets</td></tr>
+        <tr><td class="tool"><span class="cat-dot mint"></span>PHP</td><td data-i18n="cat-backend">Backend</td><td data-i18n="usage-projects">En projets</td></tr>
+        <tr><td class="tool"><span class="cat-dot mint"></span>Laravel</td><td data-i18n="cat-backend">Backend</td><td data-i18n="usage-projects">En projets</td></tr>
+        <tr><td class="tool"><span class="cat-dot mint"></span>MySQL</td><td data-i18n="cat-backend">Backend</td><td data-i18n="usage-projects">En projets</td></tr>
+        <tr><td class="tool"><span class="cat-dot mint"></span>MongoDB</td><td data-i18n="cat-backend">Backend</td><td data-i18n="usage-projects">En projets</td></tr>
+        <tr><td class="tool"><span class="cat-dot amber"></span>Figma</td><td data-i18n="cat-design">Design</td><td data-i18n="usage-projects">En projets</td></tr>
+        <tr><td class="tool"><span class="cat-dot neutral"></span>Git / GitHub</td><td data-i18n="cat-tools">Outils</td><td data-i18n="usage-daily">Quotidien</td></tr>
+        <tr><td class="tool"><span class="cat-dot neutral"></span>Trello</td><td data-i18n="cat-tools">Outils</td><td data-i18n="usage-projects">En projets</td></tr>
+        <tr><td class="tool"><span class="cat-dot neutral"></span>VS Code</td><td data-i18n="cat-tools">Outils</td><td data-i18n="usage-daily">Quotidien</td></tr>
+        <tr><td class="tool"><span class="cat-dot mint"></span>Vercel</td><td data-i18n="cat-deploy">Déploiement</td><td data-i18n="usage-daily">Quotidien</td></tr>
+        <tr><td class="tool"><span class="cat-dot mint"></span>Fly.io</td><td data-i18n="cat-deploy">Déploiement</td><td data-i18n="usage-projects">En projets</td></tr>
       </tbody>
     </table>
-    <p class="skills-note"></p>
+    <p class="skills-note" data-i18n="skills-note">// niveaux d'usage indicatifs — à ajuster selon ta pratique réelle</p>
   </section>
 
   <section id="contact" class="wrap">
@@ -509,9 +519,9 @@
       <div class="rule"></div>
     </div>
     <div class="contact-box">
-      <p>Une idée de projet ou une question ? Écris-moi.</p>
+      <p data-i18n="contact-intro">Une idée de projet ou une question ? Écris-moi.</p>
       <div class="contact-links">
-        <a href="mailto:divine.nishimwe21@gmail.com" class="btn primary">Envoyer un email</a>
+        <a href="mailto:divine.nishimwe21@gmail.com" class="btn primary" data-i18n="contact-email">Envoyer un email</a>
         <a href="https://github.com/DivineNID" target="_blank" rel="noopener" class="btn">GitHub</a>
         <a href="https://www.linkedin.com/in/irankunda-divine-nishimwe-357846345" target="_blank" rel="noopener" class="btn">LinkedIn</a>
       </div>
@@ -520,7 +530,7 @@
 </main>
 
 <footer>
-  <div class="wrap">© <span id="year"></span> NISHIMWE Irankunda Divine — construit avec HTML, CSS &amp; JS</div>
+  <div class="wrap">© <span id="year"></span> NISHIMWE Irankunda Divine — <span data-i18n="footer-built">construit avec HTML, CSS &amp; JS</span></div>
 </footer>
 
 <script>
@@ -584,6 +594,107 @@
       });
     });
   }
+
+  // --- bascule de langue FR / EN ---
+  const translations = {
+    fr: {
+      'nav-work': 'projets', 'nav-process': 'processus', 'nav-skills': 'competences', 'nav-contact': 'contact',
+      'hero-comment': "// design d'abord, code ensuite",
+      'hero-role': '"Développeuse web & designer"',
+      'hero-fn-name': 'construit',
+      'hero-fn-return': '"des interfaces claires, pensées avant d\'être codées"',
+      'hero-philosophy': "Ma formation en design m'a appris à me demander <em>pourquoi</em> avant <em>comment</em>. Chaque projet ci-dessous montre les deux couches : la décision d'interface, et la décision technique qui la fait tenir.",
+      'hero-cta-projects': 'Voir les projets', 'hero-cta-contact': 'Me contacter',
+      'section-projects': 'Projets', 'section-skills': 'Compétences',
+      'status-deployed': 'déployé',
+      'label-problem': 'Problème', 'label-design': 'Décision design', 'label-tech': 'Décision technique', 'label-result': 'Résultat',
+      'weather-title': 'Dashboard météo interactif',
+      'weather-problem': "Les gens veulent une météo qui se souvient de leurs villes et s'adapte à leur environnement, sans réglages manuels répétés à chaque visite.",
+      'weather-design': "Historique des villes visible en un coup d'œil, bascule °C/°F et mode sombre/clair accessibles sans quitter l'écran principal.",
+      'weather-tech': "Géolocalisation automatique au chargement, appel à une API météo publique, état persistant géré côté client en React.",
+      'weather-result': "Dashboard fonctionnel déployé sur Vercel, réutilisable comme base pour d'autres projets orientés données.",
+      'link-code': 'Code source →', 'link-demo': 'Démo live →',
+      'ecoride-subtitle': 'covoiturage écologique',
+      'ecoride-intro': "Conçu sur Figma avant tout développement, avec une identité verte associée à l'écologie.",
+      'caption-home': 'accueil', 'caption-login': 'connexion', 'caption-results': 'résultats de covoiturage', 'caption-signup': 'création de compte',
+      'ecoride-problem': "Faciliter des trajets partagés économiques et écologiques, avec un système clair de recherche, de réservation et de confiance entre passagers.",
+      'ecoride-design': "Maquettes conçues sur Figma en partant de wireframes basse fidélité, avant de passer à une identité verte associée à l'écologie, avec notes et avis passagers visibles pour installer la confiance.",
+      'ecoride-tech': "Frontend en React et Tailwind CSS, backend en PHP/Laravel avec MySQL et MongoDB, gestion de projet sur Trello, déploiement sur Fly.io.",
+      'ecoride-result': "Application complète déployée : recherche de trajets, fiche détaillée par covoiturage, création de compte et connexion fonctionnelles.",
+      'cinephoria-subtitle': 'réservation de cinéma',
+      'cinephoria-problem': "Une chaîne de cinémas avait besoin d'une plateforme complète pour présenter sa programmation, vendre des billets en ligne et gérer ses salles, employés et incidents techniques, avec trois publics différents : visiteurs, employés et administrateurs.",
+      'cinephoria-design': "Charte graphique dédiée (bleu nuit, or, bleu azur) pensée sur Figma avant tout développement, avec un parcours de réservation en 3 étapes clarifié et des espaces distincts pour chaque rôle utilisateur.",
+      'cinephoria-tech': "Backend PHP/PDO avec MySQL pour les données transactionnelles et MongoDB pour le tableau de bord, complété par une application mobile Flutter (billets, QR code) et une application bureautique Python pour la gestion des incidents.",
+      'cinephoria-result': "Écosystème de trois applications interconnectées, déployé avec authentification JWT sécurisée, gestion de projet suivie sur Trello et dépôt Git organisé en branches main/develop/feature.",
+      'caption-booking': 'réservation', 'caption-admin': 'espace admin',
+      'th-tool': 'Outil', 'th-category': 'Catégorie', 'th-usage': 'Usage',
+      'cat-frontend': 'Frontend', 'cat-backend': 'Backend', 'cat-design': 'Design', 'cat-tools': 'Outils', 'cat-deploy': 'Déploiement',
+      'usage-daily': 'Quotidien', 'usage-projects': 'En projets',
+      'skills-note': "// niveaux d'usage indicatifs — à ajuster selon ta pratique réelle",
+      'contact-intro': 'Une idée de projet ou une question ? Écris-moi.',
+      'contact-email': 'Envoyer un email',
+      'footer-built': 'construit avec HTML, CSS &amp; JS',
+    },
+    en: {
+      'nav-work': 'work', 'nav-process': 'process', 'nav-skills': 'skills', 'nav-contact': 'contact',
+      'hero-comment': '// design first, code second',
+      'hero-role': '"Web Developer & Designer"',
+      'hero-fn-name': 'builds',
+      'hero-fn-return': '"clear interfaces, thought through before being coded"',
+      'hero-philosophy': "My design background taught me to ask <em>why</em> before <em>how</em>. Each project below shows both layers: the interface decision, and the technical decision that holds it up.",
+      'hero-cta-projects': 'See the projects', 'hero-cta-contact': 'Get in touch',
+      'section-projects': 'Projects', 'section-skills': 'Skills',
+      'status-deployed': 'deployed',
+      'label-problem': 'Problem', 'label-design': 'Design decision', 'label-tech': 'Technical decision', 'label-result': 'Result',
+      'weather-title': 'Interactive weather dashboard',
+      'weather-problem': "People want weather that remembers their cities and adapts to their environment, without repeating manual settings on every visit.",
+      'weather-design': "City history visible at a glance, °C/°F toggle and dark/light mode accessible without leaving the main screen.",
+      'weather-tech': "Automatic geolocation on load, calls to a public weather API, persistent client-side state managed in React.",
+      'weather-result': "Functional dashboard deployed on Vercel, reusable as a base for other data-driven projects.",
+      'link-code': 'Source code →', 'link-demo': 'Live demo →',
+      'ecoride-subtitle': 'eco-friendly carpooling',
+      'ecoride-intro': "Designed in Figma before any development, with a green identity tied to sustainability.",
+      'caption-home': 'home', 'caption-login': 'login', 'caption-results': 'carpooling results', 'caption-signup': 'sign up',
+      'ecoride-problem': "Making shared, affordable and eco-friendly rides easier, with a clear system for search, booking and trust between passengers.",
+      'ecoride-design': "Mockups built in Figma starting from low-fidelity wireframes, moving to a green identity tied to sustainability, with visible passenger ratings and reviews to build trust.",
+      'ecoride-tech': "React and Tailwind CSS on the frontend, PHP/Laravel backend with MySQL and MongoDB, project management on Trello, deployed on Fly.io.",
+      'ecoride-result': "Fully deployed app: ride search, detailed carpooling listings, working account creation and login.",
+      'cinephoria-subtitle': 'cinema ticket booking',
+      'cinephoria-problem': "A cinema chain needed a full platform to showcase its schedule, sell tickets online and manage its rooms, staff and technical incidents, across three different audiences: visitors, staff and admins.",
+      'cinephoria-design': "Dedicated brand identity (midnight blue, gold, azure blue) designed in Figma before any development, with a clarified 3-step booking flow and separate spaces for each user role.",
+      'cinephoria-tech': "PHP/PDO backend with MySQL for transactional data and MongoDB for the dashboard, complemented by a Flutter mobile app (tickets, QR code) and a Python desktop app for incident management.",
+      'cinephoria-result': "Ecosystem of three interconnected applications, deployed with secure JWT authentication, project tracking on Trello and a Git repo organised into main/develop/feature branches.",
+      'caption-booking': 'booking', 'caption-admin': 'admin area',
+      'th-tool': 'Tool', 'th-category': 'Category', 'th-usage': 'Usage',
+      'cat-frontend': 'Frontend', 'cat-backend': 'Backend', 'cat-design': 'Design', 'cat-tools': 'Tools', 'cat-deploy': 'Deployment',
+      'usage-daily': 'Daily', 'usage-projects': 'In projects',
+      'skills-note': "// usage levels are indicative — adjust to match your actual practice",
+      'contact-intro': "Got a project idea or a question? Write to me.",
+      'contact-email': 'Send an email',
+      'footer-built': 'built with HTML, CSS &amp; JS',
+    }
+  };
+
+  const langToggle = document.getElementById('lang-toggle');
+
+  function setLanguage(lang) {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang][key] !== undefined) {
+        el.innerHTML = translations[lang][key];
+      }
+    });
+    langToggle.textContent = lang === 'fr' ? 'EN' : 'FR';
+    localStorage.setItem('site-lang', lang);
+  }
+
+  langToggle.addEventListener('click', () => {
+    const current = document.documentElement.lang === 'en' ? 'en' : 'fr';
+    setLanguage(current === 'fr' ? 'en' : 'fr');
+  });
+
+  setLanguage(localStorage.getItem('site-lang') || 'fr');
 </script>
 
 </body>
