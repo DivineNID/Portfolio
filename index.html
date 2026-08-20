@@ -10,18 +10,19 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #ffffff;
-    --bg-elev: #f2f6fc;
-    --panel: #f8fafc;
-    --border: #e2e8f0;
-    --border-strong: #c7d2e3;
-    --text: #16202c;
-    --text-muted: #57647a;
-    --text-faint: #93a1b8;
-    --mint: #16a34a;
-    --mint-dim: #0f7a37;
-    --amber: #d99a00;
+    --bg: #faf4e6;
+    --bg-elev: #f1e7cd;
+    --panel: #f4ead6;
+    --border: #e2d1a8;
+    --border-strong: #cdb87f;
+    --text: #171512;
+    --text-muted: #4a453d;
+    --text-faint: #8c8474;
+    --mint: #22c55e;
+    --mint-dim: #16a34a;
+    --amber: #eab308;
     --coral: #2563eb;
+    --red: #c1381f;
     --mono: 'JetBrains Mono', ui-monospace, monospace;
     --sans: 'Inter', system-ui, sans-serif;
   }
@@ -36,6 +37,13 @@
   }
   a{color:inherit; text-decoration:none;}
   .wrap{max-width: 960px; margin: 0 auto; padding: 0 24px;}
+
+  /* REVEAL AU SCROLL */
+  .reveal{opacity:0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+  }
 
   /* background grid texture */
   body::before{
@@ -53,7 +61,7 @@
   /* NAV */
   header{
     position: sticky; top:0; z-index: 10;
-    background: rgba(255,255,255,0.85);
+    background: rgba(250,244,230,0.85);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
   }
@@ -67,7 +75,13 @@
   }
   .logo span{color: var(--mint);}
   .navlinks{display:flex; gap:28px; font-family: var(--mono); font-size:13px; color: var(--text-muted);}
+  .navlinks a{position:relative; transition: color .2s ease;}
   .navlinks a:hover{color: var(--mint);}
+  .navlinks a.active{color: var(--mint);}
+  .navlinks a.active::after{
+    content:""; position:absolute; left:0; right:0; bottom:-8px; height:2px;
+    background: var(--mint); border-radius:2px;
+  }
 
   /* HERO — code editor window */
   .hero{padding: 72px 0 56px; position:relative; z-index:1;}
@@ -85,7 +99,7 @@
     border-bottom: 1px solid var(--border);
   }
   .dot{width:11px; height:11px; border-radius:50%;}
-  .dot.r{background:var(--coral);} .dot.y{background:var(--amber);} .dot.g{background:var(--mint);}
+  .dot.r{background:var(--red);} .dot.y{background:var(--amber);} .dot.g{background:var(--mint);}
   .editor-tabs{display:flex; margin-left: 16px; font-family: var(--mono); font-size: 12px; color: var(--text-muted); gap:18px;}
   .editor-tabs .active{color: var(--text); border-bottom: 2px solid var(--mint); padding-bottom: 10px; margin-bottom:-10px;}
   .editor-body{padding: 28px 32px 36px; font-family: var(--mono); font-size: 14px; overflow-x:auto;}
@@ -109,17 +123,24 @@
     padding: 10px 18px; border-radius: 6px;
     border: 1px solid var(--border-strong);
     transition: border-color .15s, transform .1s;
+    display:inline-flex; align-items:center; gap:6px;
   }
+  .btn .arrow{display:inline-block; transition: transform .2s ease;}
+  .btn:hover .arrow{transform: translateX(3px);}
   .btn:hover{border-color: var(--mint); transform: translateY(-1px);}
   .btn.primary{background: var(--mint); color: #ffffff; border-color: var(--mint); font-weight:700;}
   .btn.primary:hover{background: var(--mint-dim);}
 
   /* SECTION HEADERS */
   section{padding: 64px 0; position:relative; z-index:1;}
-  .section-head{display:flex; align-items:baseline; gap:12px; margin-bottom: 32px;}
-  .section-head .tag{font-family: var(--mono); color: var(--mint); font-size: 13px;}
-  .section-head h2{font-size: 22px; font-weight:600;}
-  .section-head .rule{flex:1; height:1px; background: var(--border);}
+  .section-head{display:flex; align-items:flex-end; gap:16px; margin-bottom: 32px;}
+  .section-head .tag{
+    font-family: var(--mono); color: var(--red); font-weight:700;
+    font-size: 52px; line-height:0.8; letter-spacing:-0.02em;
+  }
+  .section-head .tag.amber{color: var(--amber);}
+  .section-head h2{font-size: 22px; font-weight:600; padding-bottom:6px;}
+  .section-head .rule{flex:1; height:2px; background: var(--red); opacity:0.25; align-self:flex-end; margin-bottom:12px;}
 
   /* PROJECTS */
   .project{
@@ -128,13 +149,19 @@
     background: var(--panel);
     margin-bottom: 20px;
     overflow:hidden;
+    transition: transform .15s ease, box-shadow .15s ease;
+    will-change: transform;
   }
+  .project:hover{box-shadow: 0 16px 32px -18px rgba(15,23,42,0.18);}
   .project-head{
     display:flex; align-items:center; justify-content:space-between;
     padding: 14px 20px;
     border-bottom: 1px solid var(--border);
+    border-left: 3px solid transparent;
     font-family: var(--mono); font-size: 13px; color: var(--text-muted);
+    transition: border-color .2s ease;
   }
+  .project:hover .project-head{border-left-color: var(--red);}
   .project-head .filename::before{content:"$ cat "; color: var(--text-faint);}
   .project-body{padding: 22px 20px 24px;}
   .project-body h3{font-size:18px; margin-bottom:8px;}
@@ -205,15 +232,37 @@
   @media (max-width: 640px){
     .pair-images{grid-template-columns: 1fr;}
   }
+  .project-gallery img, .pair-images img{transition: transform .45s ease;}
+  .project-gallery figure:hover img, .pair-images figure:hover img{transform: scale(1.07);}
 
-  /* SKILLS */
-  .skills-grid{display:grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); gap:14px;}
-  .skill-card{
-    border:1px solid var(--border); border-radius:8px; background: var(--panel);
-    padding: 16px 18px;
+  /* SKILLS — table style "rapport" */
+  .skills-table{width:100%; border-collapse:collapse; font-family: var(--mono); font-size:13px;}
+  .skills-table thead th{
+    text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.05em;
+    color: var(--text-faint); font-weight:500; padding: 0 12px 10px; border-bottom:1px solid var(--border-strong);
   }
-  .skill-card .label{font-family: var(--mono); font-size:11px; color: var(--text-faint); margin-bottom:6px;}
-  .skill-card .value{font-size:14px;}
+  .skills-table tbody tr{border-bottom:1px solid var(--border);}
+  .skills-table tbody tr:hover{background: var(--bg-elev);}
+  .skills-table td{padding: 11px 12px; color: var(--text-muted); vertical-align:middle;}
+  .skills-table td.tool{color: var(--text); font-weight:500;}
+  .cat-dot{
+    display:inline-block; width:7px; height:7px; border-radius:50%;
+    margin-right:8px; vertical-align:middle;
+    transition: transform .2s ease;
+  }
+  .skills-table tbody tr:hover .cat-dot{transform: scale(1.6);}
+  .cat-dot.mint{background: var(--mint);}
+  .cat-dot.coral{background: var(--coral);}
+  .cat-dot.amber{background: var(--amber);}
+  .cat-dot.neutral{background: var(--text-faint);}
+  .skills-note{
+    font-family: var(--mono); font-size:11px; color: var(--text-faint);
+    margin-top:14px;
+  }
+  @media (max-width: 640px){
+    .skills-table{font-size:12px;}
+    .skills-table thead th:nth-child(2), .skills-table td:nth-child(2){display:none;}
+  }
 
   /* CONTACT */
   .contact-box{
@@ -273,8 +322,8 @@
     </div>
     <p class="philosophy">Ma formation en design m'a appris à me demander <em>pourquoi</em> avant <em>comment</em>. Chaque projet ci-dessous montre les deux couches : la décision d'interface, et la décision technique qui la fait tenir.</p>
     <div class="hero-cta">
-      <a href="#projets" class="btn primary">Voir les projets</a>
-      <a href="#contact" class="btn">Me contacter</a>
+      <a href="#projets" class="btn primary">Voir les projets <span class="arrow">→</span></a>
+      <a href="#contact" class="btn">Me contacter <span class="arrow">→</span></a>
     </div>
   </section>
 
@@ -329,36 +378,12 @@
       </div>
       <div class="project-body">
         <h3>EcoRide — covoiturage écologique</h3>
-        <p style="color:var(--text-muted); font-size:14px; max-width:620px; margin-bottom:16px;">Avant le code, il y a des choix. Ces paires montrent le chemin entre le wireframe pensé sur Figma et l'interface finale.</p>
-        <div class="process-pairs">
-          <div class="process-pair">
-            <div class="pair-label">// page d'accueil</div>
-            <div class="pair-images">
-              <figure><img src="img/wireframe-accueil.png" alt="Wireframe de la page d'accueil EcoRide"><figcaption>wireframe</figcaption></figure>
-              <figure><img src="img/final-accueil.png" alt="Version finale de la page d'accueil EcoRide"><figcaption>résultat final</figcaption></figure>
-            </div>
-          </div>
-          <div class="process-pair">
-            <div class="pair-label">// page de connexion</div>
-            <div class="pair-images">
-              <figure><img src="img/wireframe-connexion.png" alt="Wireframe de la page de connexion EcoRide"><figcaption>wireframe</figcaption></figure>
-              <figure><img src="img/final-connexion.png" alt="Version finale de la page de connexion EcoRide"><figcaption>résultat final</figcaption></figure>
-            </div>
-          </div>
-          <div class="process-pair">
-            <div class="pair-label">// résultats de covoiturage</div>
-            <div class="pair-images">
-              <figure><img src="img/wireframe-covoiturage.png" alt="Wireframe des résultats de covoiturage EcoRide"><figcaption>wireframe</figcaption></figure>
-              <figure><img src="img/final-covoiturage.png" alt="Version finale des résultats de covoiturage EcoRide"><figcaption>résultat final</figcaption></figure>
-            </div>
-          </div>
-          <div class="process-pair">
-            <div class="pair-label">// création de compte</div>
-            <div class="pair-images">
-              <figure><img src="img/wireframe-creation-compte.png" alt="Wireframe de la création de compte EcoRide"><figcaption>wireframe</figcaption></figure>
-              <figure><img src="img/final-creation-compte.png" alt="Version finale de la création de compte EcoRide"><figcaption>résultat final</figcaption></figure>
-            </div>
-          </div>
+        <p style="color:var(--text-muted); font-size:14px; max-width:620px; margin-bottom:16px;">Conçu sur Figma avant tout développement, avec une identité verte associée à l'écologie.</p>
+        <div class="project-gallery">
+          <figure><img src="img/final-accueil.png" alt="Page d'accueil EcoRide"><figcaption>accueil</figcaption></figure>
+          <figure><img src="img/final-connexion.png" alt="Page de connexion EcoRide"><figcaption>connexion</figcaption></figure>
+          <figure><img src="img/final-covoiturage.png" alt="Résultats de covoiturage EcoRide"><figcaption>résultats de covoiturage</figcaption></figure>
+          <figure><img src="img/final-creation-compte.png" alt="Création de compte EcoRide"><figcaption>création de compte</figcaption></figure>
         </div>
         <p class="placeholder-note"></p>
         <div class="case-study" style="margin-top:24px;">
@@ -445,17 +470,36 @@
 
   <section id="competences" class="wrap">
     <div class="section-head">
-      <span class="tag">02</span>
+      <span class="tag amber">02</span>
       <h2>Compétences</h2>
       <div class="rule"></div>
     </div>
-    <div class="skills-grid">
-      <div class="skill-card"><div class="label">Frontend</div><div class="value">HTML, CSS, JavaScript, React, Tailwind CSS</div></div>
-      <div class="skill-card"><div class="label">Backend</div><div class="value">PHP, Laravel, MySQL, MongoDB</div></div>
-      <div class="skill-card"><div class="label">Design</div><div class="value">Figma — wireframes et maquettes</div></div>
-      <div class="skill-card"><div class="label">Outils</div><div class="value">Git, GitHub, Trello, VS Code, XAMPP</div></div>
-      <div class="skill-card"><div class="label">Déploiement</div><div class="value">Vercel, Fly.io</div></div>
-    </div>
+    <table class="skills-table">
+      <thead>
+        <tr>
+          <th>Outil</th>
+          <th>Catégorie</th>
+          <th>Usage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="tool"><span class="cat-dot coral"></span>React</td><td>Frontend</td><td>Quotidien</td></tr>
+        <tr><td class="tool"><span class="cat-dot coral"></span>JavaScript</td><td>Frontend</td><td>Quotidien</td></tr>
+        <tr><td class="tool"><span class="cat-dot coral"></span>HTML / CSS</td><td>Frontend</td><td>Quotidien</td></tr>
+        <tr><td class="tool"><span class="cat-dot coral"></span>Tailwind CSS</td><td>Frontend</td><td>En projets</td></tr>
+        <tr><td class="tool"><span class="cat-dot mint"></span>PHP</td><td>Backend</td><td>En projets</td></tr>
+        <tr><td class="tool"><span class="cat-dot mint"></span>Laravel</td><td>Backend</td><td>En projets</td></tr>
+        <tr><td class="tool"><span class="cat-dot mint"></span>MySQL</td><td>Backend</td><td>En projets</td></tr>
+        <tr><td class="tool"><span class="cat-dot mint"></span>MongoDB</td><td>Backend</td><td>En projets</td></tr>
+        <tr><td class="tool"><span class="cat-dot amber"></span>Figma</td><td>Design</td><td>En projets</td></tr>
+        <tr><td class="tool"><span class="cat-dot neutral"></span>Git / GitHub</td><td>Outils</td><td>Quotidien</td></tr>
+        <tr><td class="tool"><span class="cat-dot neutral"></span>Trello</td><td>Outils</td><td>En projets</td></tr>
+        <tr><td class="tool"><span class="cat-dot neutral"></span>VS Code</td><td>Outils</td><td>Quotidien</td></tr>
+        <tr><td class="tool"><span class="cat-dot mint"></span>Vercel</td><td>Déploiement</td><td>Quotidien</td></tr>
+        <tr><td class="tool"><span class="cat-dot mint"></span>Fly.io</td><td>Déploiement</td><td>En projets</td></tr>
+      </tbody>
+    </table>
+    <p class="skills-note"></p>
   </section>
 
   <section id="contact" class="wrap">
@@ -490,6 +534,56 @@
   // clin d'œil pour qui ouvre la console — un vrai signe de dev
   console.log('%cSalut ! Tu regardes sous le capot, comme moi 👋', 'color:#16a34a; font-family:monospace; font-size:13px;');
   console.log('%cKigali → le web. Envoie-moi un message si un projet te fait envie.', 'color:#57647a; font-family:monospace; font-size:12px;');
+
+  // --- reveal au scroll, avec petit effet cascade ---
+  const revealTargets = document.querySelectorAll(
+    '.section-head, .project, .skills-table tbody tr, .contact-box'
+  );
+  revealTargets.forEach((el) => el.classList.add('reveal'));
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('in'), i * 60);
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  revealTargets.forEach((el) => revealObserver.observe(el));
+
+  // --- scrollspy : surligne le lien de nav de la section visible ---
+  const navLinks = document.querySelectorAll('.navlinks a[href^="#"]');
+  const sections = Array.from(navLinks)
+    .map((a) => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+
+  const spyObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const id = '#' + entry.target.id;
+        navLinks.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px' });
+
+  sections.forEach((s) => spyObserver.observe(s));
+
+  // --- léger tilt 3D sur les cartes projet, au survol de la souris ---
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.project').forEach((card) => {
+      card.style.transformStyle = 'preserve-3d';
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = `perspective(900px) rotateX(${(-y * 2.5).toFixed(2)}deg) rotateY(${(x * 2.5).toFixed(2)}deg)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  }
 </script>
 
 </body>
